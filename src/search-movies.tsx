@@ -81,7 +81,7 @@ export default function Command() {
 
   return (
     <List
-      isShowingDetail={showingDetail}
+      isShowingDetail={true}
       isLoading={isLoading}
       throttle={true}
       searchBarPlaceholder="Search Douban Movies"
@@ -97,7 +97,12 @@ export default function Command() {
             title={movie.title}
             subtitle={movie.category}
             icon={{ source: movie.cover }}
-            detail={<List.Item.Detail markdown={`![Illustration](${movie.cover})`} metadata={metadata(movie)} />}
+            detail={
+              <List.Item.Detail
+                markdown={`![Illustration](${movie.cover})`}
+                metadata={showingDetail ? metadata(movie) : ''}
+              />
+            }
             actions={
               <ActionPanel>
                 <Action.OpenInBrowser url={movie.url} />
