@@ -24,6 +24,12 @@
       "title": "Search Music",
       "description": "Search Music on Douban",
       "mode": "view"
+    },
+    {
+      "name": "search-groups",
+      "title": "Search Groups",
+      "description": "Search Groups on Douban",
+      "mode": "view"
     }
   ],
   "dependencies": {
