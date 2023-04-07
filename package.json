@@ -42,6 +42,12 @@
       "title": "Search Sites",
       "description": "Search Sites on Douban",
       "mode": "view"
+    },
+    {
+      "name": "search-games",
+      "title": "Search Games",
+      "description": "Search Games on Douban",
+      "mode": "view"
     }
   ],
   "dependencies": {

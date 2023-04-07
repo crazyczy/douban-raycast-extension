@@ -3,7 +3,7 @@ import { useFetch } from '@raycast/utils';
 import { useState } from 'react';
 import * as cheerio from 'cheerio';
 
-type group = {
+type Group = {
   category: string;
   title: string;
   url: string;
@@ -11,7 +11,7 @@ type group = {
   member: string;
 };
 
-type SearchResult = group[];
+type SearchResult = Group[];
 
 export default function Command() {
   const [search, setSearch] = useState<string>('');
@@ -41,7 +41,7 @@ export default function Command() {
           const cover = $(item).find("img[src^='https']").attr('src') || '';
           const member = $(item).find('div.info')?.text()?.trim() || '';
 
-          const group: group = {
+          const group: Group = {
             category,
             title,
             url,
@@ -57,7 +57,7 @@ export default function Command() {
     },
   });
 
-  function metadata(group: group) {
+  function metadata(group: Group) {
     return (
       <List.Item.Detail.Metadata>
         <List.Item.Detail.Metadata.Label title="Member" text={group.member} />
