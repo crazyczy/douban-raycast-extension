@@ -40,7 +40,7 @@ export default function Command() {
           const category = $(item).find('h3 span:first')?.text()?.trim() || '';
           const url = $(item).find('div.content a')?.prop('href')?.trim() || '';
           const title = $(item).find('div.title a')?.text()?.trim() || '';
-          const rating = $(item).find('span.rating_nums')?.text()?.trim() || '(暂无评分)';
+          const rating = $(item).find('span.rating_nums')?.text()?.trim() || '';
           const year = $(item).find('span.subject-cast')?.text()?.split('/').pop()?.trim() || '';
           const actors =
             $(item)
@@ -84,7 +84,7 @@ export default function Command() {
       isShowingDetail={true}
       isLoading={isLoading}
       throttle={true}
-      searchBarPlaceholder="Search Douban Movies"
+      searchBarPlaceholder="Search Movies on Douban"
       onSearchTextChange={(newValue) => setSearch(newValue)}
     >
       {search === '' ? (

@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "douban",
   "title": "Douban",
-  "description": "Search Douban Movies",
+  "description": "Search Something on Douban",
   "icon": "douban.png",
   "author": "crazyczy",
   "license": "MIT",
@@ -10,7 +10,7 @@
     {
       "name": "search-movies",
       "title": "Search Movies",
-      "description": "Search Douban Movies",
+      "description": "Search Movies on Douban",
       "mode": "view"
     }
   ],
