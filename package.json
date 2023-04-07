@@ -12,6 +12,12 @@
       "title": "Search Movies",
       "description": "Search Movies on Douban",
       "mode": "view"
+    },
+    {
+      "name": "search-books",
+      "title": "Search Books",
+      "description": "Search Books on Douban",
+      "mode": "view"
     }
   ],
   "dependencies": {
