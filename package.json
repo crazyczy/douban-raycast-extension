@@ -5,6 +5,9 @@
   "description": "Search Something on Douban",
   "icon": "douban.png",
   "author": "crazyczy",
+  "categories": [
+    "Web"
+  ],
   "license": "MIT",
   "commands": [
     {
