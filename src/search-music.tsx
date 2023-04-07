@@ -3,23 +3,24 @@ import { useFetch } from '@raycast/utils';
 import { useState } from 'react';
 import * as cheerio from 'cheerio';
 
-type Movie = {
+type Music = {
   category: string;
   title: string;
   year: string;
   rating: string;
-  actors: string[];
+  singers: string[];
   url: string;
   cover: string;
+  typ: string;
 };
 
-type SearchResult = Movie[];
+type SearchResult = Music[];
 
 export default function Command() {
   const [search, setSearch] = useState<string>('');
   const [showingDetail, setShowingDetail] = useState(true);
 
-  const { data, isLoading } = useFetch(`https://www.douban.com/search?q=${search}&cat=1002`, {
+  const { data, isLoading } = useFetch(`https://www.douban.com/search?q=${search}&cat=1003`, {
     execute: search.trim().length > 0,
     headers: {
       'User-Agent':
@@ -30,7 +31,7 @@ export default function Command() {
         throw new Error(response.statusText);
       }
 
-      const movies: SearchResult = [];
+      const musicList: SearchResult = [];
       const data = await response.text();
       if (data) {
         const $ = cheerio.load(data);
@@ -41,39 +42,43 @@ export default function Command() {
           const url = $(item).find('div.content a')?.prop('href')?.trim() || '';
           const title = $(item).find('div.title a')?.text()?.trim() || '';
           const rating = $(item).find('span.rating_nums')?.text()?.trim() || '';
-          const year = $(item).find('span.subject-cast')?.text()?.split('/').pop()?.trim() || '';
-          const actors = $(item)
+          const subjectEl = $(item).find('span.subject-cast')?.text()?.split('/');
+          const year = subjectEl?.pop()?.trim() || '';
+          const typ = subjectEl?.pop()?.trim() || '';
+          const singers = $(item)
             .find('span.subject-cast')
             ?.text()
             ?.split('/')
-            .slice(1, -1)
-            .map((actor) => actor.trim()) || [''];
+            .slice(0, -2)
+            .map((author) => author.trim()) || [''];
           const cover = $(item).find("img[src^='https']").attr('src') || '';
 
-          const movie: Movie = {
+          const music: Music = {
             category,
             title,
             rating,
             year,
-            actors,
+            singers,
             url,
             cover,
+            typ,
           };
 
-          movies.push(movie);
+          musicList.push(music);
         });
       }
 
-      return movies;
+      return musicList;
     },
   });
 
-  function metadata(movie: Movie) {
+  function metadata(music: Music) {
     return (
       <List.Item.Detail.Metadata>
-        <List.Item.Detail.Metadata.Label title="Year" text={movie.year} />
-        <List.Item.Detail.Metadata.Label title="Rating" text={movie.rating} />
-        <List.Item.Detail.Metadata.Label title="Actors" text={movie.actors && movie.actors.join(' / ')} />
+        <List.Item.Detail.Metadata.Label title="Year" text={music.year} />
+        <List.Item.Detail.Metadata.Label title="Rating" text={music.rating} />
+        <List.Item.Detail.Metadata.Label title="Singers" text={music.singers && music.singers.join(' / ')} />
+        <List.Item.Detail.Metadata.Label title="Type" text={music.typ} />
       </List.Item.Detail.Metadata>
     );
   }
@@ -83,28 +88,28 @@ export default function Command() {
       isShowingDetail={true}
       isLoading={isLoading}
       throttle={true}
-      searchBarPlaceholder="Search Movies on Douban"
+      searchBarPlaceholder="Search Music on Douban"
       onSearchTextChange={(newValue) => setSearch(newValue)}
     >
       {search === '' ? (
         <List.EmptyView />
       ) : (
         data &&
-        data.map((movie) => (
+        data.map((music) => (
           <List.Item
-            key={movie.url}
-            title={movie.title}
-            subtitle={movie.category}
-            icon={{ source: movie.cover }}
+            key={music.url}
+            title={music.title}
+            subtitle={music.category}
+            icon={{ source: music.cover }}
             detail={
               <List.Item.Detail
-                markdown={`![Illustration](${movie.cover})`}
-                metadata={showingDetail ? metadata(movie) : ''}
+                markdown={`![Illustration](${music.cover})`}
+                metadata={showingDetail ? metadata(music) : ''}
               />
             }
             actions={
               <ActionPanel>
-                <Action.OpenInBrowser url={movie.url} />
+                <Action.OpenInBrowser url={music.url} />
                 <Action title="Toggle Detail" onAction={() => setShowingDetail(!showingDetail)} />
               </ActionPanel>
             }

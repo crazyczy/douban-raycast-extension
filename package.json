@@ -18,6 +18,12 @@
       "title": "Search Books",
       "description": "Search Books on Douban",
       "mode": "view"
+    },
+    {
+      "name": "search-music",
+      "title": "Search Music",
+      "description": "Search Music on Douban",
+      "mode": "view"
     }
   ],
   "dependencies": {

@@ -77,7 +77,7 @@ export default function Command() {
       <List.Item.Detail.Metadata>
         <List.Item.Detail.Metadata.Label title="Year" text={book.year} />
         <List.Item.Detail.Metadata.Label title="Rating" text={book.rating} />
-        <List.Item.Detail.Metadata.Label title="Authors" text={book.authors.join(' / ')} />
+        <List.Item.Detail.Metadata.Label title="Authors" text={book.authors && book.authors.join(' / ')} />
         <List.Item.Detail.Metadata.Label title="Press" text={book.press} />
       </List.Item.Detail.Metadata>
     );
