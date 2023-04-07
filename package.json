@@ -36,6 +36,12 @@
       "title": "Search Users",
       "description": "Search Users on Douban",
       "mode": "view"
+    },
+    {
+      "name": "search-sites",
+      "title": "Search Sites",
+      "description": "Search Sites on Douban",
+      "mode": "view"
     }
   ],
   "dependencies": {
