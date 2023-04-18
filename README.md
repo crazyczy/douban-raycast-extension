@@ -21,7 +21,7 @@ Search something on Douban
 ## Installation
 
 ```sh
-git clone git@github.com:crazyczy/douban-raycast-extension.git
+git clone https://github.com/crazyczy/douban-raycast-extension.git
 cd douban-raycast-extension
 npm install
 ```
