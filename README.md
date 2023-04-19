@@ -20,11 +20,17 @@ Search something on Douban
 
 ## Installation
 
-```sh
-git clone https://github.com/crazyczy/douban-raycast-extension.git
-cd douban-raycast-extension
-npm install
-```
+- Raycast Store (Recommended)
+
+  <a title="Install douban Raycast Extension" href="https://www.raycast.com/crazyczy/douban"><img src="https://www.raycast.com/crazyczy/douban/install_button@2x.png" height="64" alt="" style="height: 64px;"></a>
+
+- Manual
+
+  ```sh
+  git clone https://github.com/crazyczy/douban-raycast-extension.git
+  cd douban-raycast-extension
+  npm install
+  ```
 
 ## License
 
