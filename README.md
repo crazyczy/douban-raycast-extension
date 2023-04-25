@@ -4,6 +4,7 @@ Search something on Douban
 
 ## Supported Commands
 
+- Search Multi
 - Search Movies
 - Search Books
 - Search Music

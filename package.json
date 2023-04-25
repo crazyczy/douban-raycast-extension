@@ -11,6 +11,12 @@
   "license": "MIT",
   "commands": [
     {
+      "name": "search-multi",
+      "title": "Search Multi",
+      "description": "Search Multi on Douban",
+      "mode": "view"
+    },
+    {
       "name": "search-movies",
       "title": "Search Movies",
       "description": "Search Movies on Douban",
