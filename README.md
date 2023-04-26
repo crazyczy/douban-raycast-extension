@@ -4,7 +4,7 @@ Search something on Douban
 
 ## Supported Commands
 
-- Search Multi
+- Search Multi(local installation only)
 - Search Movies
 - Search Books
 - Search Music
@@ -25,7 +25,7 @@ Search something on Douban
 
   <a title="Install douban Raycast Extension" href="https://www.raycast.com/crazyczy/douban"><img src="https://www.raycast.com/crazyczy/douban/install_button@2x.png" height="64" alt="" style="height: 64px;"></a>
 
-- Manual
+- Local
 
   ```sh
   git clone https://github.com/crazyczy/douban-raycast-extension.git
